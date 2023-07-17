@@ -59,7 +59,7 @@ In order to run this project you need to follow some few steps :
    ```sh
     NODE_ENV= development
     PORT= 3000
-    ACCESS_TOKEN= <<Product_Hunt_Developer_Token>
+    ACCESS_TOKEN= <<Product_Hunt_Developer_Token>>
     API_URL= https://api.producthunt.com/v2/api/graphql
    ```  
 <p align="right">(<a href="#top">back to top</a>)</p>
