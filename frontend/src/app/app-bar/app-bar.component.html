@@ -1,0 +1,22 @@
+<mat-toolbar>
+  <div [routerLink]="['/']" style="display: flex; align-items: center; margin-right: 5%">
+    <button
+      mat-icon-button
+      class="example-icon"
+      aria-label="Example icon-button with menu icon"
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Products Hunter</span>
+  </div>
+
+  <div [routerLink]="['/products']" style="display: flex; align-items: center; margin-right: 5%">
+    <mat-icon>store</mat-icon>
+    <span>Products</span>
+  </div>
+
+  <div [routerLink]="['/topics']" style="display: flex; align-items: center; margin-right: 5%">
+    <mat-icon> list_alt</mat-icon>
+    <span>Topics</span>
+  </div>
+</mat-toolbar>
