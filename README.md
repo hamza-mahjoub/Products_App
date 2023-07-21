@@ -1,4 +1,4 @@
-# NestJs Backend Template 
+# Products App 
 <div id="top"></div>
 
 <!-- TABLE OF CONTENTS -->
