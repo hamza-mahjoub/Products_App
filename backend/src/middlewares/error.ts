@@ -1,13 +1,12 @@
-const httpStatus = require('http-status');
-const config = require('../configs/config');
-const logger = require('../configs/logger');
-const ApiError = require('../utils/ApiError');
+import httpStatus from 'http-status';
+import { config, logger } from '../configs';
+import { ApiError } from '../utils';
+import { Request, Response } from 'express';
 
-const errorConverter = (err, req, res, next) => {
+const errorConverter = (err: any, req: Request, res: Response, next: any) => {
   let error = err;
   if (!(error instanceof ApiError)) {
-    const statusCode =
-      error.statusCode  ? httpStatus.BAD_REQUEST : httpStatus.INTERNAL_SERVER_ERROR;
+    const statusCode = error.statusCode ? httpStatus.BAD_REQUEST : httpStatus.INTERNAL_SERVER_ERROR;
     const message = error.message || httpStatus[statusCode];
     error = new ApiError(statusCode, message, false, err.stack);
   }
@@ -15,7 +14,7 @@ const errorConverter = (err, req, res, next) => {
 };
 
 // eslint-disable-next-line no-unused-vars
-const errorHandler = (err, req, res, next) => {
+const errorHandler = (err: any, req: Request, res: Response, next: any) => {
   let { statusCode, message } = err;
   if (config.env === 'production' && !err.isOperational) {
     statusCode = httpStatus.INTERNAL_SERVER_ERROR;
@@ -34,12 +33,8 @@ const errorHandler = (err, req, res, next) => {
     logger.error(err);
   }
 
-  if(statusCode === 404)
-    res.status(statusCode).send("404 not found!");
+  if (statusCode === 404) res.status(statusCode).send('404 not found!');
   res.status(statusCode).send(response);
 };
 
-module.exports = {
-  errorConverter,
-  errorHandler,
-};
+export { errorConverter, errorHandler };

@@ -4,7 +4,7 @@
  * @returns {Object}
  */
 
-const ProductQueryBuilder = (options, access_token) => {
+const ProductQueryBuilder = (options: any, access_token: string) => {
   if (options.date)
     return {
       headers: {
@@ -13,7 +13,6 @@ const ProductQueryBuilder = (options, access_token) => {
         'Content-Type': 'application/json',
       },
       method: 'POST',
-      mode: 'cors',
       body: JSON.stringify({
         query: `query { posts(first: ${options.limit || 1000}, order: VOTES, postedBefore: "${
           options.date.before
@@ -45,7 +44,6 @@ const ProductQueryBuilder = (options, access_token) => {
         'Content-Type': 'application/json',
       },
       method: 'POST',
-      mode: 'cors',
       body: JSON.stringify({
         query: `query { posts(first: ${options.limit || 1000}, order: VOTES) {
           edges{
@@ -74,7 +72,7 @@ const ProductQueryBuilder = (options, access_token) => {
  * @returns {Object}
  */
 
-const TopicQueryBuilder = (access_token) => {
+const TopicQueryBuilder = (access_token: string) => {
   return {
     headers: {
       Authorization: `Bearer ${access_token}`,
@@ -82,7 +80,6 @@ const TopicQueryBuilder = (access_token) => {
       'Content-Type': 'application/json',
     },
     method: 'POST',
-    mode: 'cors',
     body: JSON.stringify({
       query: `query { topics {
           edges{
@@ -100,7 +97,4 @@ const TopicQueryBuilder = (access_token) => {
   };
 };
 
-module.exports = {
-  ProductQueryBuilder,
-  TopicQueryBuilder
-};
+export { ProductQueryBuilder, TopicQueryBuilder };
