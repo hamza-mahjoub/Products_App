@@ -1,12 +1,10 @@
-const express = require('express');
-const topicController = require('../../controllers/topic.controller');
+import express, { Router } from 'express';
+import { topicController } from '../../controllers';
+const topicRouter: Router = express.Router();
 
-const router = express.Router();
+topicRouter.get('/', topicController.getTopics);
 
-router
-  .get('/', topicController.getTopics)
-
-module.exports = router;
+export default topicRouter;
 
 /**
  * @swagger

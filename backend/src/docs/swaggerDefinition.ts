@@ -1,7 +1,7 @@
-const { version } = require('../../package.json');
-const config = require('../configs/config');
+import { version } from '../../package.json';
+import { config } from '../configs';
 
-const swaggerDef = {
+const swaggerDefinition = {
   openapi: '3.0.0',
   info: {
     title: 'Backend documentation',
@@ -14,4 +14,4 @@ const swaggerDef = {
   ],
 };
 
-module.exports = swaggerDef;
+export default swaggerDefinition;

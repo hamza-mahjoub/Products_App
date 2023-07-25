@@ -67,7 +67,14 @@ export class ProductsComponent implements OnInit {
         )
         .subscribe(
           (fetchedProducts) => {
-            this.products = fetchedProducts.data.posts.edges;
+            this.products = fetchedProducts.data.posts.edges.sort(
+              (a: any, b: any) => {
+                return (
+                  <any>new Date(a.node.createdAt) -
+                  <any>new Date(b.node.createdAt)
+                );
+              }
+            );
           },
           (error) => {
             this.notifier.notify('error', error.message);

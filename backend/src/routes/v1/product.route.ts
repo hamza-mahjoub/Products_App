@@ -1,15 +1,14 @@
-const express = require('express');
-const validate = require('../../middlewares/validate');
-const productValidation = require('../../validations/product.validation');
-const productController = require('../../controllers/product.controller');
+import express, { Router } from 'express';
+import { validate } from '../../middlewares';
+import { productValidation } from '../../validations';
+import { productController } from '../../controllers';
+const productRouter: Router = express.Router();
 
-const router = express.Router();
-
-router
+productRouter
   .get('/', productController.getProducts)
   .post('/', validate(productValidation.getProducts), productController.getProducts);
 
-module.exports = router;
+export default productRouter;
 
 /**
  * @swagger

@@ -1,11 +1,11 @@
-const app = require('./app');
-const config = require('./configs/config');
-const logger = require('./configs/logger');
+import { Server } from 'http';
+import app from './app';
+import { logger, config } from './configs';
 
-let server;
+let server: Server;
 server = app.listen(config.port, () => {
-    logger.info(`Listening to port ${config.port}`);
-  });
+  logger.info(`Listening to port ${config.port}`);
+});
 
 const exitHandler = () => {
   if (server) {
@@ -18,7 +18,7 @@ const exitHandler = () => {
   }
 };
 
-const unexpectedErrorHandler = (error) => {
+const unexpectedErrorHandler = (error: any) => {
   logger.error(error);
   exitHandler();
 };

@@ -1,27 +1,27 @@
-const express = require('express');
-const productRoute = require('./product.route');
-const topicRoute = require('./topic.route');
-const docsRoute = require('./docs.route');
-const config = require('../../configs/config');
+import express, { Router } from 'express';
+import productRouter from './product.route';
+import topicRouter from './topic.route';
+import docsRouter from './docs.route';
+import { config } from '../../configs';
 
-const router = express.Router();
+const router: Router = express.Router();
 
 const defaultRoutes = [
   {
     path: '/products',
-    route: productRoute,
+    route: productRouter,
   },
   {
     path: '/topics',
-    route: topicRoute,
-  }
+    route: topicRouter,
+  },
 ];
 
 const devRoutes = [
   // routes available only in development mode
   {
     path: '/docs',
-    route: docsRoute,
+    route: docsRouter,
   },
 ];
 
@@ -35,4 +35,4 @@ if (config.env === 'development') {
   });
 }
 
-module.exports = router;
+export default router;
